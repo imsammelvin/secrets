@@ -31,8 +31,8 @@ app.use(passport.session());
 
 
 //Connecting Atlas
-//mongoose.connect("mongodb+srv://auth:auth@cluster0.rkwt7.mongodb.net/userDB", {useNewUrlParser: true});
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://auth:auth@cluster0.rkwt7.mongodb.net/userDB", {useNewUrlParser: true});
+//mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
 
 const userSchema = new mongoose.Schema({
     email: String, 
@@ -185,9 +185,13 @@ app.post('/login', function(req, res){
 });
 
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 5000;
+}
+app.listen(port);
 
 
-
-app.listen(5000, function(){
-    console.log("Server started on port 5000");
+app.listen(port, function(){
+    console.log("Server has started successfully");
 });
