@@ -60,7 +60,8 @@ passport.serializeUser(function(user, done) {
     });
   });
 
-passport.use(new GoogleStrategy({
+
+  passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:5000/auth/google/secrets",
@@ -74,7 +75,7 @@ passport.use(new GoogleStrategy({
 ));
 
 
-app.get('/', function(req, res){
+app.get("/", function(req, res){
     res.render('home');
 });
 
